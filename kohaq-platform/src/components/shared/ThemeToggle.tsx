@@ -1,9 +1,22 @@
-export default function Page() {
+"use client";
+
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+export function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   return (
-    <main className="mx-auto max-w-6xl px-6 py-12">
-      <h1 className="font-heading text-3xl text-primary">KOHAQ Platform</h1>
-      <p className="mt-3 text-text-muted">Page scaffold in progress.</p>
-    </main>
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface transition hover:-translate-y-0.5 hover:shadow-sm"
+      aria-label="Toggle theme"
+      title="Toggle theme"
+    >
+      {isDark ? <Sun className="h-5 w-5 text-accent" /> : <Moon className="h-5 w-5 text-primary" />}
+    </button>
   );
 }
 

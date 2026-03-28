@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Oswald, Plus_Jakarta_Sans } from "next/font/google";
 import "../styles/globals.css";
+import { ThemeProvider } from "@/components/shared/ThemeProvider";
 
 const headingFont = Montserrat({
   variable: "--font-heading",
@@ -33,9 +34,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${headingFont.variable} ${labelFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-bg text-text">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

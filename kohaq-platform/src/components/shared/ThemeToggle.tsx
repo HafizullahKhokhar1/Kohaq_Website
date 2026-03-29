@@ -1,10 +1,17 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isDark = resolvedTheme === "dark";
 
   return (
@@ -15,7 +22,11 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       title="Toggle theme"
     >
-      {isDark ? <Sun className="h-5 w-5 text-accent" /> : <Moon className="h-5 w-5 text-primary" />}
+      {mounted ? (
+        isDark ? <Sun className="h-5 w-5 text-accent" /> : <Moon className="h-5 w-5 text-primary" />
+      ) : (
+        <span className="h-5 w-5" aria-hidden="true" />
+      )}
     </button>
   );
 }

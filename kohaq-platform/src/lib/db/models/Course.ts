@@ -28,8 +28,6 @@ const courseSchema = new Schema(
 	{ timestamps: true }
 );
 
-courseSchema.index({ slug: 1 }, { unique: true });
-
 export type CourseDocument = InferSchemaType<typeof courseSchema> & { _id: string };
 
 const Course = models.Course || model("Course", courseSchema);

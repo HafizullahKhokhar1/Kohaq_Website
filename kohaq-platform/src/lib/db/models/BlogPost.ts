@@ -17,8 +17,6 @@ const blogPostSchema = new Schema({
 	createdAt: { type: Date, default: Date.now },
 });
 
-blogPostSchema.index({ slug: 1 }, { unique: true });
-
 export type BlogPostDocument = InferSchemaType<typeof blogPostSchema> & { _id: string };
 
 const BlogPost = models.BlogPost || model("BlogPost", blogPostSchema);

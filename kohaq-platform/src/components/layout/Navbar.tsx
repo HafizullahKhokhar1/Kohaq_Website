@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
-
+import { AuthButton } from "@/components/shared/AuthButton";
 const NAV_LINKS = [
   { href: "/learn", label: "Learn" },
   { href: "/careers", label: "Careers" },
@@ -16,8 +15,20 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-surface/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/images/logo-dark.png" alt="Kohaq" width={120} height={32} className="h-8 w-auto dark:hidden" />
-          <Image src="/images/logo-white.png" alt="Kohaq" width={120} height={32} className="hidden h-8 w-auto dark:block" />
+          <div className="h-8 w-auto dark:hidden">
+            <svg viewBox="0 0 120 32" className="h-8 w-auto fill-primary">
+              <text x="4" y="22" fontSize="20" fontWeight="bold">
+                KOHAQ
+              </text>
+            </svg>
+          </div>
+          <div className="hidden h-8 w-auto dark:block">
+            <svg viewBox="0 0 120 32" className="h-8 w-auto fill-white">
+              <text x="4" y="22" fontSize="20" fontWeight="bold">
+                KOHAQ
+              </text>
+            </svg>
+          </div>
           <div className="hidden sm:block">
             <p className="font-heading text-lg text-primary dark:text-secondary">KOHAQ</p>
             <p className="font-label text-[10px] uppercase tracking-[0.15em] text-text-muted">New Tomorrow</p>
@@ -39,6 +50,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <div className="hidden md:block">
             <ThemeToggle />
+                    <AuthButton />
           </div>
           <MobileNav />
         </div>

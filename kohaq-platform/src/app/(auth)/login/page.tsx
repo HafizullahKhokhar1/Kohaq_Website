@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/dashboard";
@@ -83,6 +83,14 @@ export default function LoginPage() {
         New here? <Link href="/register" className="text-accent">Create account</Link>
       </p>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<main className="mx-auto w-full max-w-md px-6 py-14 text-sm text-text-muted">Loading login...</main>}>
+      <LoginContent />
+    </Suspense>
   );
 }
 

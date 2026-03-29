@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1b263b;
+  --color-secondary: #006400;
+  --color-accent: #ff8c00;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f5f7fa;
+  --color-text: #1b263b;
+  --color-text-muted: #5a6478;
+  --color-border: #e2e8f0;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0f4f8;
+}
+
+.dark {
+  --color-primary: #ffffff;
+  --color-secondary: #39ff14;
+  --color-accent: #f9a602;
+  --color-bg: #0d1b2a;
+  --color-bg-subtle: #1a2a3d;
+  --color-text: #ffffff;
+  --color-text-muted: #a0aec0;
+  --color-border: #2d3748;
+  --color-surface: #1a2a3d;
+  --color-surface-2: #243447;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: var(--color-bg);
+    --foreground: var(--color-text);
+    --card: var(--color-surface);
+    --card-foreground: var(--color-text);
+    --popover: var(--color-surface);
+    --popover-foreground: var(--color-text);
+    --primary: var(--color-primary);
+    --primary-foreground: #ffffff;
+    --secondary: var(--color-secondary);
+    --secondary-foreground: #ffffff;
+    --muted: var(--color-bg-subtle);
+    --muted-foreground: var(--color-text-muted);
+    --accent: var(--color-accent);
+    --accent-foreground: #101010;
+    --destructive: #c0392b;
+    --border: var(--color-border);
+    --input: var(--color-border);
+    --ring: var(--color-accent);
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: var(--color-bg);
+    --foreground: var(--color-text);
+    --card: var(--color-surface);
+    --card-foreground: var(--color-text);
+    --popover: var(--color-surface);
+    --popover-foreground: var(--color-text);
+    --primary: var(--color-primary);
+    --primary-foreground: #0d1b2a;
+    --secondary: var(--color-secondary);
+    --secondary-foreground: #0d1b2a;
+    --muted: var(--color-bg-subtle);
+    --muted-foreground: var(--color-text-muted);
+    --accent: var(--color-accent);
+    --accent-foreground: #0d1b2a;
+    --destructive: #ef5350;
+    --border: var(--color-border);
+    --input: var(--color-border);
+    --ring: var(--color-secondary);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-bg text-text;
+  }
+
+  html {
+    @apply font-body;
+  }
+}
